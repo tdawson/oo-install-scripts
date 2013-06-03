@@ -4,7 +4,6 @@
 
 # setup variables
 source oo-install.conf
-KEYFILE=/var/named/${DOMAIN}.key
 
 # install software
 yum -y install bind bind-utils

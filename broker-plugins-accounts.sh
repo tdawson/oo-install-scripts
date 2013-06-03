@@ -3,7 +3,6 @@
 
 # setup variables
 source oo-install.conf
-KEYFILE=/var/named/${DOMAIN}.key
 
 # install software
 # rubygem-psych requirement might go away

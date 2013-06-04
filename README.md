@@ -9,10 +9,12 @@ that consists of one broker and one node.
 
 For the tests we started with a F19 minimal install
 
-= BROKER SETUP 
-# ON NODE
+======================
+BROKER SETUP 
+======================
+(ON NODE)
 nm-tool
-# ON BROKER
+== ON BROKER
 yum -y install git
 git clone git://github.com/tdawson/oo-install-scripts.git
 nm-tool

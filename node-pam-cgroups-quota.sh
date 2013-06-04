@@ -31,6 +31,8 @@ echo "Add usrquota to filesystem"
 echo "  add usrquota to whichever filesystem has /var/lib/openshift on it"
 echo "    Example:"
 echo "      /dev/sda1 / ext4    defaults,usrquota 1 1"
+echo ""
+echo "  Hit enter to edit fstab with vi"
 read tempkey
 vi /etc/fstab
 

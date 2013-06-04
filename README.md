@@ -39,6 +39,7 @@ reboot
 NODE SETUP
 ======================
 # ON BROKER
+cd oo-install-scripts/
 sh broker-node-auth-setup.sh
 
 # ON NODE

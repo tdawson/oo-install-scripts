@@ -14,5 +14,5 @@ scp /etc/openshift/rsync_id_rsa.pub root@${NODEHOSTNAME}:/root/.ssh/
 ssh root@${NODEHOSTNAME} "cat /root/.ssh/rsync_id_rsa.pub >> /root/.ssh/authorized_keys ; rm -f /root/.ssh/rsync_id_rsa.pub"
 
 # Verify you can ssh in without password
-ssh root@${NODEHOSTNAME} "hostname ; uptime"
+ssh -i /root/.ssh/rsync_id_rsa root@${NODEHOSTNAME} "hostname ; uptime"
 

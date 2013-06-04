@@ -6,7 +6,7 @@
 source ./oo-install.conf
 
 # install software
-yum -y install openshift-origin-msg-node-mcollective
+yum -y install openshift-origin-msg-node-mcollective mcollective-qpid-plugin
 
 #Move original configuration out of the way
 mv /etc/mcollective/server.cfg /etc/mcollective/server.cfg.orig
@@ -26,7 +26,7 @@ direct_addressing = n
 securityprovider = psk
 plugin.psk = unset
 connector = qpid
-plugin.qpid.host=${BROKERNAME}
+plugin.qpid.host=${BROKERHOSTNAME}
 plugin.qpid.secure=false
 plugin.qpid.timeout=5
 

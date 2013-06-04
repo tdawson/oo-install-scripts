@@ -27,7 +27,7 @@ firewall-cmd --list-all
 # Generate access key
 openssl genrsa -out /etc/openshift/server_priv.pem 2048
 openssl rsa -in /etc/openshift/server_priv.pem -pubout > /etc/openshift/server_pub.pem
-ssh-keygen -t rsa -b 2048 -f ~/.ssh/rsync_id_rsa
+ssh-keygen -t rsa -b 2048 -f ~/.ssh/rsync_id_rsa -N ""
 cp -v ~/.ssh/rsync_id_rsa* /etc/openshift/
 
 # Setup selinux boolean variables and set file contexts

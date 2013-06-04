@@ -66,7 +66,7 @@ sh broker-broker-app.sh
 
 if [ "$SLOW" == "yes" ] ; then
     echo "Setup plugins and accounts"
-    echo "Final Test"
+    echo "And then the final test"
     echo "  Hit Enter to continue"
     read testinput    
 fi

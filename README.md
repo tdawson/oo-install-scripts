@@ -4,14 +4,12 @@ oo-install-scripts
 These are scripts and config files that allow you to install 
 OpenShift Origin by hand, only scripted.
 
-These scripts have currently been tested on an OpenShift cluster 
+These scripts have currently been tested on an F19 OpenShift cluster 
 that consists of one broker and one node.
 
 For the tests we started with a F19 minimal install
 
-======================
-BROKER SETUP
-======================
+== BROKER SETUP ==
 # ON NODE
 nm-tool
 # ON BROKER

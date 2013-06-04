@@ -9,7 +9,7 @@ that consists of one broker and one node.
 
 For the tests we started with a F19 minimal install
 
-== BROKER SETUP ==
+= BROKER SETUP 
 # ON NODE
 nm-tool
 # ON BROKER
@@ -22,13 +22,15 @@ vi oo-install.conf
 > NODEIP="192.168.122.161" (Put in the node ip address)
 
 ======================
-BROKER RUN SCRIPT (Full Automation)
+BROKER RUN SCRIPT 
+(Full Automation)
 ======================
 sh setup-broker.sh
 reboot
 
 ======================
-BROKER RUN SCRIPT (Hit return at each step)
+BROKER RUN SCRIPT 
+(Hit return at each step)
 ======================
 sh setup-broker.sh --slow
 reboot
@@ -49,13 +51,15 @@ vi oo-install.conf
 > NODEIP="192.168.122.161" (Put in the node ip address)
 
 ======================
-NODE RUN SCRIPT (Full Automation)
+NODE RUN SCRIPT 
+(Full Automation)
 ======================
 sh setup-node.sh
 reboot
 
 ======================
-NODE RUN SCRIPT (Hit return at each step)
+NODE RUN SCRIPT 
+(Hit return at each step)
 ======================
 sh setup-node.sh --slow
 reboot

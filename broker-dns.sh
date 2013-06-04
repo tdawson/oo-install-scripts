@@ -6,7 +6,7 @@
 source ./oo-install.conf
 
 # install software
-yum -y install bind bind-utils
+yum -y install bind bind-utils openshift-origin-broker-util
 
 # setup DNSSEC key pair
 cd /var/named/
@@ -138,20 +138,19 @@ firewall-cmd --list-all
 /bin/systemctl enable named.service
 /bin/systemctl start named.service
 
-# add entries using nsupdate
-echo "You need to cut and paste the following at the prompt"
-echo "=====start cut below this line===="
-echo "server 127.0.0.1
-echo "update delete ${BROKERHOSTNAME} A
-echo "update add ${BROKERHOSTNAME} 180 A ${BROKERIP} )
-echo "send
-echo "quit
-echo "=====end cut above this line===="
-nsupdate -k ${KEYFILE}
+## add entries using nsupdate
+#echo "You need to cut and paste the following at the prompt"
+#echo "=====start cut below this line===="
+#echo "server 127.0.0.1 "
+#echo "update delete ${BROKERHOSTNAME} A "
+#echo "update add ${BROKERHOSTNAME} 180 A ${BROKERIP} "
+#echo "send "
+#echo "quit "
+#echo "=====end cut above this line===="
+#nsupdate -k ${KEYFILE}
+oo-register-dns -s 127.0.0.1 -h ${BROKERNAME} -d ${DOMAIN} -n ${BROKERIP} -k ${KEYFILE}
 
 # test DNS server
-# This is best done before hostname has been set.
-ping ${BROKERHOSTNAME}
 dig @127.0.0.1 ${BROKERHOSTNAME}
 
 

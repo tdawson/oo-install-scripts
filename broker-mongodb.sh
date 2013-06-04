@@ -20,12 +20,13 @@ sed -i -e 's|#auth = true|auth = true\nsmallfiles = true|g' /etc/mongodb.conf
 /usr/bin/systemctl status mongod.service
 
 # Testing
-echo ""
-echo "Testing that mongodb works"
-echo "  type in the following"
-echo "    show dbs"
-echo "    exit"
-echo "  Hit return to start"
-read tempkey
-mongo
+# Uncomment this if you want to manually test
+#echo ""
+#echo "Testing that mongodb works"
+#echo "  type in the following"
+#echo "    show dbs"
+#echo "    exit"
+#echo "  Hit return to start"
+#read tempkey
+#mongo
 

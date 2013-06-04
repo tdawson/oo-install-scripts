@@ -7,6 +7,8 @@ OpenShift Origin by hand, only scripted.
 These scripts have currently been tested on an OpenShift cluster 
 that consists of one broker and one node.
 
+For the tests we started with a F19 minimal install
+
 ======================
 BROKER SETUP
 ======================
@@ -50,12 +52,12 @@ vi oo-install.conf
 ======================
 NODE RUN SCRIPT (Full Automation)
 ======================
-sh setup-broker.sh
+sh setup-node.sh
 reboot
 
 ======================
 NODE RUN SCRIPT (Hit return at each step)
 ======================
-sh setup-broker.sh --slow
+sh setup-node.sh --slow
 reboot
 

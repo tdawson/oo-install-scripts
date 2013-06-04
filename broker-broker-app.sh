@@ -38,11 +38,24 @@ restorecon -rv /var/run
 restorecon -rv /usr/share/gems/gems/passenger-*
 
 # Tweak broker config, if needed
-echo ""
-echo "Tweak broker config file"
-echo "  Might not have to do anything but make sure you have the following lines"
-echo "    CLOUD_DOMAIN=\"${DOMAIN}\""
-echo "    VALID_GEAR_SIZES=\"small,medium\""
-read tempkey
-vi /etc/openshift/broker.conf
+#echo ""
+#echo "Tweak broker config file"
+#echo "  Might not have to do anything but make sure you have the following lines"
+#echo "    CLOUD_DOMAIN=\"${DOMAIN}\""
+#echo "    VALID_GEAR_SIZES=\"small,medium\""
+#read tempkey
+#vi /etc/openshift/broker.conf
+if grep -q "VALID_GEAR_SIZES=\"small,medium\"" /etc/openshift/broker.conf ; then
+  echo "  VALID_GEAR_SIZES are correct"
+else 
+  echo "  Fixing up VALID_GEAR_SIZES"
+  sed -i -e 's|VALID_GEAR_SIZES=.*$|VALID_GEAR_SIZES=\"small,medium\"|g' /etc/openshift/broker.conf
+fi
+
+if grep -q "CLOUD_DOMAIN=\"${DOMAIN}\"" /etc/openshift/broker.conf ; then
+  echo "  CLOUD_DOMAIN is correct"
+else 
+  echo "  Fixing up CLOUD_DOMAIN"
+  sed -i -e "s|CLOUD_DOMAIN=.*$|CLOUD_DOMAIN=\"${DOMAIN}\"|g" /etc/openshift/broker.conf
+fi
 

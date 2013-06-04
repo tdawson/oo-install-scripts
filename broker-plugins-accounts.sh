@@ -6,7 +6,7 @@ source ./oo-install.conf
 
 # install software
 # rubygem-psych requirement might go away
-yum -y install rubygem-psych
+yum -y install rubygem-psych rubygem-mocha
 
 # Create config files from examples
 cp /usr/share/gems/gems/openshift-origin-auth-remote-user-*/conf/openshift-origin- auth-remote-user.conf.example /etc/openshift/plugins.d/openshift-origin-auth-remote-user.conf
@@ -44,5 +44,5 @@ bundle --local
 /usr/bin/systemctl status openshift-broker.service
 
 # Test basic broker service
-curl -k -u demo:demopassword https://localhost/broker/rest/api
+curl -k -u demo:demo https://localhost/broker/rest/api
 

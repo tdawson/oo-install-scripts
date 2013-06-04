@@ -2,7 +2,7 @@
 # Setup ssh, port-proxy, and the node-app
 
 # setup variables
-source oo-install.conf
+source ./oo-install.conf
 
 # SSH
 echo ""

@@ -2,7 +2,7 @@
 # Setup dhcp client and hostname
 
 # setup variables
-source oo-install.conf
+source ./oo-install.conf
 
 # setup dhcp client
 echo "prepend domain-name-servers ${BROKERIP};" >> /etc/dhcp/dhclient-eth0.conf

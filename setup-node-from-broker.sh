@@ -2,7 +2,7 @@
 # Setup dhcp client and hostname
 
 # setup variables
-source oo-install.conf
+source ./oo-install.conf
 GITDIR="/root/oo-install-scripts"
 
 # Setup ssh autentication between broker and node

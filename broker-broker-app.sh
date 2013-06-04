@@ -2,7 +2,7 @@
 # Setup dhcp client and hostname
 
 # setup variables
-source oo-install.conf
+source ./oo-install.conf
 
 # install software
 yum -y install openshift-origin-broker openshift-origin-broker-util rubygem-openshift-origin-auth-remote-user rubygem-openshift-origin-msg-broker-mcollective rubygem-openshift-origin-dns-bind

@@ -4,7 +4,7 @@
 # Change this if working with activemq
 
 # setup variables
-source oo-install.conf
+source ./oo-install.conf
 
 # install software
 yum -y install mcollective-client

@@ -3,7 +3,7 @@
 # This script currently only does Bind
 
 # setup variables
-source oo-install.conf
+source ./oo-install.conf
 
 # install software
 yum -y install bind bind-utils

@@ -2,7 +2,7 @@
 # Setup ssh keys for authenticating from broker to node
 
 # setup variables
-source oo-install.conf
+source ./oo-install.conf
 
 # Put node information in DNS
 oo-register-dns -h node -d ${DOMAIN} -n ${NODEIP} -k ${KEYFILE}

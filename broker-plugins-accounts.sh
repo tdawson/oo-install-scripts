@@ -2,7 +2,7 @@
 # Setup dhcp client and hostname
 
 # setup variables
-source oo-install.conf
+source ./oo-install.conf
 
 # install software
 # rubygem-psych requirement might go away

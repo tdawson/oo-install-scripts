@@ -19,7 +19,7 @@ if [ "$SLOW" == "yes" ] ; then
     echo "  Hit Enter to continue"
     read testinput    
 fi
-sh date-time.sh
+sh common.date-time.sh
 
 if [ "$SLOW" == "yes" ] ; then
     echo "Setup DNS server"
@@ -30,11 +30,17 @@ sh broker-dns.sh
 
 if [ "$SLOW" == "yes" ] ; then
     echo "Setup host dhcp setting"
+    echo "  Hit Enter to continue"
+    read testinput    
+fi
+sh broker-dhcp.sh
+
+if [ "$SLOW" == "yes" ] ; then
     echo "Set hostname"
     echo "  Hit Enter to continue"
     read testinput    
 fi
-sh broker-dhcp-hostname.sh
+sh broker-hostname.sh
 
 if [ "$SLOW" == "yes" ] ; then
     echo "Setup mongodb"

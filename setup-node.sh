@@ -49,7 +49,7 @@ if [ "$SLOW" == "yes" ] ; then
     echo "  Hit Enter to continue"
     read testinput    
 fi
-sh node-node-app.sh
+sh node-app-install.sh
 
 if [ "$SLOW" == "yes" ] ; then
     echo "Setup pam"

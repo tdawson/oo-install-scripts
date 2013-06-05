@@ -12,7 +12,7 @@
 #read tempkey
 #vi /etc/fstab
 /bin/cp -f /etc/fstab /etc/fstab.save.openshift
-FS="/var/lib | grep -v Filesystem | awk '{print $6}'"
+FS=`df /var/lib | grep -v Filesystem | awk '{print $6}'`
 sed -i "s|^\S*\s\+${FS}\s\+\S*\s\+|&usrquota,|" /etc/fstab
 
 # reboot or remount

@@ -43,6 +43,3 @@ bundle --local
 /usr/bin/systemctl start openshift-broker.service
 /usr/bin/systemctl status openshift-broker.service
 
-# Test basic broker service
-curl -k -u demo:demo https://localhost/broker/rest/api
-

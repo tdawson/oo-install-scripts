@@ -17,7 +17,6 @@ sed -i -e 's|#auth = true|auth = true\nsmallfiles = true|g' /etc/mongodb.conf
 # Setup and start service
 /usr/bin/systemctl enable mongod.service
 /usr/bin/systemctl start mongod.service
-/usr/bin/systemctl status mongod.service
 
 # Testing
 # Uncomment this if you want to manually test

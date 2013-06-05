@@ -13,5 +13,4 @@ firewall-cmd --list-all
 # Setup and start service
 /usr/bin/systemctl enable qpidd.service
 /usr/bin/systemctl start qpidd.service
-/usr/bin/systemctl status qpidd.service
 

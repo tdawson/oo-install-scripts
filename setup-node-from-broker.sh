@@ -10,8 +10,7 @@ fi
 
 if [ "$SLOW" == "yes" ] ; then
     echo "Setup authentication between broker and node"
-    echo "  Note: You will have to type in the node"
-    echo "        password twice."
+    echo "  Note: You will have to type in the node password twice."
     echo "  Hit Enter to continue"
     read testinput    
 fi
@@ -22,7 +21,7 @@ if [ "$SLOW" == "yes" ] ; then
     echo "  Hit Enter to continue"
     read testinput    
 fi
-ssh root@${NODENAME} "yum -y update"
+ssh root@${NODEHOSTNAME} "yum -y update"
 
 
 if [ "$SLOW" == "yes" ] ; then
@@ -30,16 +29,16 @@ if [ "$SLOW" == "yes" ] ; then
     echo "  Hit Enter to continue"
     read testinput    
 fi
-ssh root@${NODENAME} "yum -y install git"
-ssh root@${NODENAME} "cd /root/ ; git clone git://github.com/tdawson/oo-install-scripts.git"
-scp ./oo-install.conf root@${NODENAME}:${GITDIR}/
+ssh root@${NODEHOSTNAME} "yum -y install git"
+ssh root@${NODEHOSTNAME} "cd /root/ ; git clone git://github.com/tdawson/oo-install-scripts.git"
+scp ./oo-install.conf root@${NODEHOSTNAME}:${GITDIR}/
 
 if [ "$SLOW" == "yes" ] ; then
     echo "Setup date and time"
     echo "  Hit Enter to continue"
     read testinput    
 fi
-ssh root@${NODENAME} "cd ${GITDIR} ; sh date-time.sh"
+ssh root@${NODEHOSTNAME} "cd ${GITDIR} ; sh date-time.sh"
 
 if [ "$SLOW" == "yes" ] ; then
     echo "Setup host dhcp setting"
@@ -47,21 +46,21 @@ if [ "$SLOW" == "yes" ] ; then
     echo "  Hit Enter to continue"
     read testinput    
 fi
-ssh root@${NODENAME} "cd ${GITDIR} ; sh node-dhcp-hostname.sh"
+ssh root@${NODEHOSTNAME} "cd ${GITDIR} ; sh node-dhcp-hostname.sh"
 
 if [ "$SLOW" == "yes" ] ; then
     echo "Setup mcollective"
     echo "  Hit Enter to continue"
     read testinput    
 fi
-ssh root@${NODENAME} "cd ${GITDIR} ; sh node-mcollective.sh"
+ssh root@${NODEHOSTNAME} "cd ${GITDIR} ; sh node-mcollective.sh"
 
 if [ "$SLOW" == "yes" ] ; then
     echo "Install and setup the node application"
     echo "  Hit Enter to continue"
     read testinput    
 fi
-ssh root@${NODENAME} "cd ${GITDIR} ; sh node-node-app.sh"
+ssh root@${NODEHOSTNAME} "cd ${GITDIR} ; sh node-node-app.sh"
 
 if [ "$SLOW" == "yes" ] ; then
     echo "Setup pam"
@@ -70,7 +69,7 @@ if [ "$SLOW" == "yes" ] ; then
     echo "  Hit Enter to continue"
     read testinput    
 fi
-ssh root@${NODENAME} "cd ${GITDIR} ; sh node-pam-cgroups-quota.sh"
+ssh root@${NODEHOSTNAME} "cd ${GITDIR} ; sh node-pam-cgroups-quota.sh"
 
 if [ "$SLOW" == "yes" ] ; then
     echo "Setup selinux"
@@ -78,7 +77,7 @@ if [ "$SLOW" == "yes" ] ; then
     echo "  Hit Enter to continue"
     read testinput    
 fi
-ssh root@${NODENAME} "cd ${GITDIR} ; sh node-selinux-system.sh"
+ssh root@${NODEHOSTNAME} "cd ${GITDIR} ; sh node-selinux-system.sh"
 
 if [ "$SLOW" == "yes" ] ; then
     echo "Setup ssh"
@@ -87,12 +86,12 @@ if [ "$SLOW" == "yes" ] ; then
     echo "  Hit Enter to continue"
     read testinput    
 fi
-ssh root@${NODENAME} "cd ${GITDIR} ; sh node-ssh-proxy-app.sh"
+ssh root@${NODEHOSTNAME} "cd ${GITDIR} ; sh node-ssh-proxy-app.sh"
 
 if [ "$SLOW" == "yes" ] ; then
     echo "Reboot the node"
     echo "  Hit Enter to continue"
     read testinput    
 fi
-ssh root@${NODENAME} "reboot"
+ssh root@${NODEHOSTNAME} "reboot"
 

@@ -39,7 +39,9 @@ BROKER RUN SCRIPT (Hit return at each step)
 ======================
 NODE SETUP
 ======================
-(ON BROKER)
+(ON BROKER) (After reboot)
+  ssh-agent bash
+  ssh-add /etc/openshift/rsync_id_rsa
   cd oo-install-scripts/
   sh broker-node-auth-setup.sh
 

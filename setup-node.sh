@@ -19,7 +19,7 @@ if [ "$SLOW" == "yes" ] ; then
     echo "  Hit Enter to continue"
     read testinput    
 fi
-sh date-time.sh
+sh common-date-time.sh
 
 if [ "$SLOW" == "yes" ] ; then
     echo "Setup host dhcp setting"
@@ -27,7 +27,15 @@ if [ "$SLOW" == "yes" ] ; then
     echo "  Hit Enter to continue"
     read testinput    
 fi
-sh node-dhcp-hostname.sh
+sh node-dhcp.sh
+
+if [ "$SLOW" == "yes" ] ; then
+    echo "Setup host dhcp setting"
+    echo "Set hostname"
+    echo "  Hit Enter to continue"
+    read testinput    
+fi
+sh node-hostname.sh
 
 if [ "$SLOW" == "yes" ] ; then
     echo "Setup mcollective"
@@ -45,27 +53,57 @@ sh node-node-app.sh
 
 if [ "$SLOW" == "yes" ] ; then
     echo "Setup pam"
+    echo "  Hit Enter to continue"
+    read testinput    
+fi
+sh node-pam.sh
+
+if [ "$SLOW" == "yes" ] ; then
     echo "Setup cgroups"
+    echo "  Hit Enter to continue"
+    read testinput    
+fi
+sh node-cgroups.sh
+
+if [ "$SLOW" == "yes" ] ; then
     echo "Setup quota"
     echo "  Hit Enter to continue"
     read testinput    
 fi
-sh node-pam-cgroups-quota.sh
+sh node-quota.sh
 
 if [ "$SLOW" == "yes" ] ; then
     echo "Setup selinux"
+    echo "  Hit Enter to continue"
+    read testinput    
+fi
+sh node-selinux.sh
+
+if [ "$SLOW" == "yes" ] ; then
     echo "Setup system settings"
     echo "  Hit Enter to continue"
     read testinput    
 fi
-sh node-selinux-system.sh
+sh node-system.sh
 
 if [ "$SLOW" == "yes" ] ; then
     echo "Setup ssh"
-    echo "Setup port-proxy"
-    echo "Setup node application"
     echo "  Hit Enter to continue"
     read testinput    
 fi
-sh node-ssh-proxy-app.sh
+sh node-ssh.sh
+
+if [ "$SLOW" == "yes" ] ; then
+    echo "Setup port-proxy"
+    echo "  Hit Enter to continue"
+    read testinput    
+fi
+sh node-proxy.sh
+
+if [ "$SLOW" == "yes" ] ; then
+    echo "Configure node application"
+    echo "  Hit Enter to continue"
+    read testinput    
+fi
+sh node-app-config.sh
 

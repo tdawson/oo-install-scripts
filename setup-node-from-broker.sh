@@ -29,6 +29,7 @@ if [ "$SLOW" == "yes" ] ; then
 fi
 ssh root@${NODENAME} "yum -y install git"
 ssh root@${NODENAME} "cd /root/ ; git clone git://github.com/tdawson/oo-install-scripts.git"
+scp ./oo-install.conf root@${NODENAME}:${GITDIR}/
 
 if [ "$SLOW" == "yes" ] ; then
     echo "Setup date and time"

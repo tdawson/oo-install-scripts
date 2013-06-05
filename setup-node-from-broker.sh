@@ -4,6 +4,9 @@
 # setup variables
 source ./oo-install.conf
 GITDIR="/root/oo-install-scripts"
+if [ "$1" == "--slow" ] ; then
+  SLOW="yes"
+fi
 
 if [ "$SLOW" == "yes" ] ; then
     echo "Setup authentication between broker and node"
@@ -12,7 +15,7 @@ if [ "$SLOW" == "yes" ] ; then
     echo "  Hit Enter to continue"
     read testinput    
 fi
-broker-node-auth-setup.sh
+sh ./broker-node-auth-setup.sh
 
 if [ "$SLOW" == "yes" ] ; then
     echo "Yum Update"

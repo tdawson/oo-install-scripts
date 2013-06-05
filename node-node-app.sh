@@ -1,6 +1,5 @@
 #!/bin/bash
-# Setup DNS for the cluster
-# This script currently only does Bind
+# Install and initial setup of the node application
 
 # install software
 yum -y install rubygem-openshift-origin-node rubygem-passenger-native openshift-origin-port-proxy openshift-origin-node-util

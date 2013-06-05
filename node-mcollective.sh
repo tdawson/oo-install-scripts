@@ -1,6 +1,6 @@
 #!/bin/bash
-# Setup DNS for the cluster
-# This script currently only does Bind
+# Setup mcollective on the node
+# At this time, this script does QPID for messaging
 
 # setup variables
 source ./oo-install.conf

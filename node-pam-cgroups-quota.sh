@@ -1,6 +1,5 @@
 #!/bin/bash
-# Setup DNS for the cluster
-# This script currently only does Bind
+# Setup pam, cgroups, and disk quota
 
 # PAM
 sed -i -e 's|pam_selinux|pam_openshift|g' /etc/pam.d/sshd

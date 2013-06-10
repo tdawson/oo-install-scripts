@@ -19,7 +19,7 @@ if [ "$SLOW" == "yes" ] ; then
     echo "  Hit Enter to continue"
     read testinput    
 fi
-sh common.date-time.sh
+sh common-date-time.sh
 
 if [ "$SLOW" == "yes" ] ; then
     echo "Setup DNS server"

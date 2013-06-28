@@ -5,6 +5,8 @@
 source ./oo-install.conf
 
 # Firewall on Broker
+echo "  === hit return to test firewall ==="
+read testinput
 echo "Testing Firewall"
 echo "  Firewall output should look like this"
 echo "  === begin cut here === "

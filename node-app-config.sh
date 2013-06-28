@@ -5,7 +5,7 @@
 source ./oo-install.conf
 
 # Node application setup
-
+/bin/systemctl enable httpd.service
 /bin/systemctl enable openshift-gears.service
 
 #echo ""

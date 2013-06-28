@@ -5,6 +5,9 @@
 yum -y install rubygem-openshift-origin-node rubygem-passenger-native openshift-origin-port-proxy openshift-origin-node-util
 yum -y install openshift-origin-cartridge-cron-1.4 openshift-origin-cartridge-diy-0.1
 
+# Setup basic services
+/bin/systemctl enable http.service
+
 # Setup firewall
 firewall-cmd --add-service=ssh
 firewall-cmd --add-service=http

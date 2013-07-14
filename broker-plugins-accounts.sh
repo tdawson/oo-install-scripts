@@ -6,7 +6,11 @@ source ./oo-install.conf
 
 # install software
 # rubygem-psych requirement might go away
-yum -y install rubygem-psych rubygem-mocha
+if [ "$DISTRO" == "fedora18" ] ; then
+	yum -y install rubygem-mocha rubygem-mongoid ruby-devel
+else
+	yum -y install rubygem-psych rubygem-mocha rubygem-mongoid
+fi
 
 # Create config files from examples
 cp /usr/share/gems/gems/openshift-origin-auth-remote-user-*/conf/openshift-origin- auth-remote-user.conf.example /etc/openshift/plugins.d/openshift-origin-auth-remote-user.conf
@@ -34,7 +38,10 @@ mongo openshift_broker_dev --eval 'db.addUser("openshift", "mooo")'
 
 # Bundle broker gems
 cd /var/www/openshift/broker
-gem install mongoid
+if [ "$DISTRO" == "fedora18" ] ; then
+	gem install psych
+	sed -i -e "s/gem 'minitest', '3.2.0'/gem 'minitest'/" Gemfile
+fi
 bundle --local
 
 # Setup and start service

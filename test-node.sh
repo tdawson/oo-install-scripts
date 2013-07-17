@@ -39,9 +39,35 @@ read testinput
 /usr/bin/systemctl status sshd.service
 
 echo " "
+echo "  === hit return to test mcollective ==="
+read testinput
+/usr/bin/systemctl status mcollective.service
+
+echo " "
 echo "  === hit return to test httpd ==="
 read testinput
 /usr/bin/systemctl status httpd.service
+
+echo " "
+echo "  === hit return to test cgred ==="
+read testinput
+/usr/bin/systemctl status cgred.service
+
+echo " "
+echo "  === hit return to test cgconfig ==="
+read testinput
+/usr/bin/systemctl status cgconfig.service
+
+echo " "
+echo "  === hit return to test mcollective ==="
+read testinput
+/usr/bin/systemctl status openshift-gears.service
+
+echo " "
+echo "  === hit return to test mcollective ==="
+read testinput
+/usr/bin/systemctl status openshift-port-proxy.service
+
 
 echo " "
 echo "Done with service checking section"

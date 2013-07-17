@@ -59,12 +59,12 @@ read testinput
 /usr/bin/systemctl status cgconfig.service
 
 echo " "
-echo "  === hit return to test mcollective ==="
+echo "  === hit return to test openshift-gears ==="
 read testinput
 /usr/bin/systemctl status openshift-gears.service
 
 echo " "
-echo "  === hit return to test mcollective ==="
+echo "  === hit return to test openshift-port-proxy ==="
 read testinput
 /usr/bin/systemctl status openshift-port-proxy.service
 

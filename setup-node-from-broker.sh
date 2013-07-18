@@ -16,6 +16,15 @@ if [ "$SLOW" == "yes" ] ; then
 fi
 sh ./broker-node-auth-setup.sh
 
+if ! [ "$OPENSHIFT_SOURCE" == "distro" ] ; then
+	if [ "$SLOW" == "yes" ] ; then
+	    echo "Setup Yum Repos"
+	    echo "  Hit Enter to continue"
+	    read testinput    
+	fi
+	ssh root@${NODEHOSTNAME} "cd ${GITDIR} ; sh common-repo.sh"
+fi
+
 if [ "$SLOW" == "yes" ] ; then
     echo "Yum Update"
     echo "  Hit Enter to continue"

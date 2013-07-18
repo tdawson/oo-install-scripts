@@ -32,36 +32,57 @@ echo " "
 echo "  === hit return to test ntpd ==="
 read testinput
 /usr/bin/systemctl status ntpd.service
+echo " "
+echo " If this does not look correct, run the following to restart the service "
+echo " /usr/bin/systemctl restart ntpd.service"
 
 echo " "
 echo "  === hit return to test sshd ==="
 read testinput
 /usr/bin/systemctl status sshd.service
+echo " "
+echo " If this does not look correct, run the following to restart the service "
+echo " /usr/bin/systemctl restart sshd.service"
 
 echo " "
 echo "  === hit return to test named ==="
 read testinput
 /bin/systemctl status named.service
+echo " "
+echo " If this does not look correct, run the following to restart the service "
+echo " /usr/bin/systemctl restart named.service"
 
 echo " "
 echo "  === hit return to test qpid ==="
 read testinput
 /usr/bin/systemctl status qpidd.service
+echo " "
+echo " If this does not look correct, run the following to restart the service "
+echo " /usr/bin/systemctl restart qpidd.service"
 
 echo " "
 echo "  === hit return to test httpd ==="
 read testinput
 /usr/bin/systemctl status httpd.service
+echo " "
+echo " If this does not look correct, run the following to restart the service "
+echo " /usr/bin/systemctl restart httpd.service"
 
 echo " "
 echo "  === hit return to test mongod ==="
 read testinput
 /usr/bin/systemctl status mongod.service
+echo " "
+echo " If this does not look correct, run the following to restart the service "
+echo " /usr/bin/systemctl restart mongod.service"
 
 echo " "
 echo "  === hit return to test openshift-broker ==="
 read testinput
 /usr/bin/systemctl status openshift-broker.service
+echo " "
+echo " If this does not look correct, run the following to restart the service "
+echo " /usr/bin/systemctl restart openshift-broker.service"
 
 echo " "
 echo "Done with service checking section"

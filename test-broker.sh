@@ -101,7 +101,7 @@ echo "..."
 echo "supported_api_versions\":[1.0,1.1,1.2,1.3],\"type\":\"links\",\"version\":\"1.3\"}"
 echo "  === end cut here === "
 
-curl -k -u demo:demo https://localhost/broker/rest/api
+curl -k -u $OPENSHIFT_USER1:$OPENSHIFT_PASSWORD1 https://localhost/broker/rest/api
 echo " "
 echo "  === hit return to continue to next test ==="
 read testinput

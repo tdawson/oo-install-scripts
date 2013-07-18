@@ -30,11 +30,11 @@ EOF
 
 # Configure authentication plugin and add a user
 cp -v /var/www/openshift/broker/httpd/conf.d/openshift-origin-auth-remote-user-basic.conf.sample /var/www/openshift/broker/httpd/conf.d/openshift-origin-auth-remote-user.conf
-htpasswd -c -b -s /etc/openshift/htpasswd demo demo
+htpasswd -c -b -s /etc/openshift/htpasswd $OPENSHIFT_USER1 $OPENSHIFT_PASSWORD1
 
 # Add Mongodb account
 grep MONGO /etc/openshift/broker.conf
-mongo openshift_broker_dev --eval 'db.addUser("openshift", "mooo")'
+mongo openshift_broker_dev --eval 'db.addUser("$MONGODB_BROKER_USER", "$MONGODB_BROKER_PASSWORD")'
 
 # Bundle broker gems
 cd /var/www/openshift/broker
@@ -45,6 +45,7 @@ fi
 bundle --local
 
 # Setup and start service
+/usr/bin/systemctl enable httpd.service
 /usr/bin/systemctl enable openshift-broker.service
 /usr/bin/systemctl start httpd.service
 /usr/bin/systemctl start openshift-broker.service

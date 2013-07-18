@@ -7,6 +7,15 @@ if [ "$1" == "--slow" ] ; then
   SLOW="yes"
 fi
 
+if ! [ "$OPENSHIFT_SOURCE" == "distro" ] ; then
+	if [ "$SLOW" == "yes" ] ; then
+	    echo "Setup Yum Repos"
+	    echo "  Hit Enter to continue"
+	    read testinput    
+	fi
+	sh common-repo.sh
+fi
+
 if [ "$SLOW" == "yes" ] ; then
     echo "Yum Update"
     echo "  Hit Enter to continue"

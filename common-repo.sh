@@ -35,9 +35,12 @@ elif [ "$OPENSHIFT_SOURCE" == "v1" ] ; then
 		echo "Release v1 only supports x86_64, not $ARCH.  Exiting ..."
 		exit 3
 	fi
+if [ "$OPENSHIFT_SOURCE" == "distro" ] ; then
+	echo "There is no need to setup the yum repo if your souce is distro.  Exiting ..."
+	exit 4
 else
 	echo "Your yum source is not supported.  Exiting ..."
-	exit 4
+	exit 5
 fi
 
 # Move old repo out of the way if it's there

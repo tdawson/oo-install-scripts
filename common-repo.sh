@@ -35,7 +35,7 @@ elif [ "$OPENSHIFT_SOURCE" == "v1" ] ; then
 		echo "Release v1 only supports x86_64, not $ARCH.  Exiting ..."
 		exit 3
 	fi
-if [ "$OPENSHIFT_SOURCE" == "distro" ] ; then
+elif [ "$OPENSHIFT_SOURCE" == "distro" ] ; then
 	echo "There is no need to setup the yum repo if your souce is distro.  Exiting ..."
 	exit 4
 else
@@ -63,5 +63,7 @@ baseurl=$DEPURL
 enabled=1
 metadata_expire=1d
 gpgcheck=0
+
 EOF
+
 

@@ -5,5 +5,10 @@
 source ./oo-install.conf
 
 # setup hostname
-echo "${NODEHOSTNAME}" > /etc/hostname
+if [ "$DISTRO" == "rhel6" ] ; then
+    # FIX THIS: We need a better sed argument
+    sed -i "s/HOSTNAME=localhost.localdomain/HOSTNAME=${NODEHOSTNAME}/" /etc/sysconfig/network
+else
+    echo "${NODEHOSTNAME}" > /etc/hostname
+fi
 

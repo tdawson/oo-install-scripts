@@ -5,6 +5,8 @@ source ./oo-install.conf
 
 yum -y install ntp
 
+ntpdate clock.redhat.com
+
 if [ "$DISTRO" == "rhel6" ] ; then
     chkconfig ntpd on
     service ntpd start

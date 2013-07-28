@@ -24,6 +24,13 @@ firewall-cmd --list-all
 echo "  === hit return to continue to next test ==="
 read testinput
 
+echo " "
+echo "  === hit return to test DNS server==="
+read testinput
+dig @127.0.0.1 ${BROKERHOSTNAME}
+echo " "
+
+
 ## Services
 echo "Checking Services"
 echo "  All services should be running without errors"

@@ -10,11 +10,12 @@ yum -y install bind bind-utils openshift-origin-broker-util
 
 # setup DNSSEC key pair
 cd /var/named/
+rm -f K${DOMAIN}*
 dnssec-keygen -a HMAC-MD5 -b 512 -n USER -r /dev/urandom ${DOMAIN}
 KEY="$(grep Key: K${DOMAIN}*.private | cut -d ' ' -f 2)"
 cd -
-rndc-confgen -a -r /dev/urandom
 echo $KEY
+rndc-confgen -a -r /dev/urandom
 
 # setup permissions for the DNSSEC key pair
 restorecon -v /etc/rndc.* /etc/named.*
@@ -55,16 +56,16 @@ key ${DOMAIN} {
 };
 EOF
 
+# Set permissions for key and database
+chown -Rv named:named /var/named
+restorecon -rv /var/named
+
 # Check the key and database
 echo "/var/named/dynamic/${DOMAIN}.db"
 cat /var/named/dynamic/${DOMAIN}.db
 echo ""
 echo "${KEYFILE}"
 cat ${KEYFILE}
-
-# Set permissions for key and database
-chown -Rv named:named /var/named
-restorecon -rv /var/named
 
 # Create the named configuration file
 mv /etc/named.conf /etc/named.conf.openshift
@@ -120,23 +121,29 @@ zone "${DOMAIN}" IN {
 };
 EOF
 
+# setup permissions of named config file
+chown -v root:named /etc/named.conf
+restorecon /etc/named.conf
+
 # Check the named file
 echo ""
 echo "/etc/named.conf"
 cat /etc/named.conf
 
-# setup permissions of named config file
-chown -v root:named /etc/named.conf
-restorecon /etc/named.conf
+if [ "$DISTRO" == "rhel6" ] ; then
+    chkconfig ntpd on
+    service ntpd start
+else
+    # Setup firewall
+    firewall-cmd --add-service=dns
+    firewall-cmd --permanent --add-service=dns
+    firewall-cmd --list-all
+    # Setup and start service
+    systemctl enable named.service
+    systemctl start named.service
+fi
 
-# Setup firewall
-firewall-cmd --add-service=dns
-firewall-cmd --permanent --add-service=dns
-firewall-cmd --list-all
 
-# Setup and start service
-/bin/systemctl enable named.service
-/bin/systemctl start named.service
 
 ## add entries using nsupdate
 #echo "You need to cut and paste the following at the prompt"
@@ -149,8 +156,5 @@ firewall-cmd --list-all
 #echo "=====end cut above this line===="
 #nsupdate -k ${KEYFILE}
 oo-register-dns -s 127.0.0.1 -h ${BROKERNAME} -d ${DOMAIN} -n ${BROKERIP} -k ${KEYFILE}
-
-# test DNS server
-dig @127.0.0.1 ${BROKERHOSTNAME}
 
 

@@ -15,8 +15,13 @@ yum -y install mongodb-server
 sed -i -e 's|#auth = true|auth = true\nsmallfiles = true|g' /etc/mongodb.conf
 
 # Setup and start service
-/usr/bin/systemctl enable mongod.service
-/usr/bin/systemctl start mongod.service
+if [ "$DISTRO" == "rhel6" ] ; then
+    chkconfig mongod on
+    service mongod start
+else
+    systemctl enable mongod.service
+    systemctl start  mongod.service
+fi
 
 # Testing
 # Uncomment this if you want to manually test

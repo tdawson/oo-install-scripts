@@ -24,6 +24,13 @@ fi
 yum -y update
 
 if [ "$SLOW" == "yes" ] ; then
+    echo "Verify basic packages are installed"
+    echo "  Hit Enter to continue"
+    read testinput    
+fi
+sh common-packages.sh
+
+if [ "$SLOW" == "yes" ] ; then
     echo "Setup date and time"
     echo "  Hit Enter to continue"
     read testinput    

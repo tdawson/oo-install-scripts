@@ -30,7 +30,7 @@ if [ "$SLOW" == "yes" ] ; then
     echo "  Hit Enter to continue"
     read testinput    
 fi
-ssh root@${NODEHOSTNAME} "yum -y update"
+ssh root@${NODEHOSTNAME} "yum clean all ; yum -y update"
 
 
 if [ "$SLOW" == "yes" ] ; then

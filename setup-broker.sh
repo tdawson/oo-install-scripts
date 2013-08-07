@@ -21,7 +21,7 @@ if [ "$SLOW" == "yes" ] ; then
     echo "  Hit Enter to continue"
     read testinput    
 fi
-yum -y update
+yum clean all ; yum -y update
 
 if [ "$SLOW" == "yes" ] ; then
     echo "Verify basic packages are installed"

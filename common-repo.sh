@@ -19,9 +19,9 @@ else
 fi
 
 # Setup the main and dependancy repo URLS
-DEPURL="https://mirror.openshift.com/pub/openshift-origin/$RELEASE/$ARCH/"
 if [ "$OPENSHIFT_SOURCE" == "nightly" ] ; then
-	MAINURL="https://mirror.openshift.com/pub/openshift-origin/nightly/$RELEASE/latest/$ARCH/"
+	MAINURL="https://mirror.openshift.com/pub/openshift-origin/nightly/$RELEASE/packages/latest/$ARCH/"
+	DEPURL="https://mirror.openshift.com/pub/openshift-origin/nightly/$RELEASE/dependencies/$ARCH/"
 elif [ "$OPENSHIFT_SOURCE" == "v1" ] ; then
 	if [ "$ARCH" == "x86_64" ] ; then
 		if [ "$DISTRO" == "rhel6" ] || [ "$DISTRO" == "fedora18" ]  ; then
@@ -33,6 +33,19 @@ elif [ "$OPENSHIFT_SOURCE" == "v1" ] ; then
 		fi
 	else
 		echo "Release v1 only supports x86_64, not $ARCH.  Exiting ..."
+		exit 3
+	fi
+elif [ "$OPENSHIFT_SOURCE" == "v2" ] ; then
+	if [ "$ARCH" == "x86_64" ] ; then
+		if [ "$DISTRO" == "rhel6" ] || [ "$DISTRO" == "fedora19" ]  ; then
+			MAINURL="https://mirror.openshift.com/pub/openshift-origin/release/1/$RELEASE/packages/$ARCH/"
+			DEPURL="https://mirror.openshift.com/pub/openshift-origin/release/1/$RELEASE/dependancies/$ARCH/"
+		else
+			echo "Release v2 only supports rhel6 and fedora19, not $DISTRO.  Exiting ..."
+			exit 2
+		fi
+	else
+		echo "Release v2 only supports x86_64, not $ARCH.  Exiting ..."
 		exit 3
 	fi
 elif [ "$OPENSHIFT_SOURCE" == "distro" ] ; then

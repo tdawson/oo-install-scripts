@@ -25,7 +25,7 @@ chmod -v 640 /etc/rndc.key
 # setup forwarders
 echo "forwarders { 8.8.8.8; 8.8.4.4; } ;" >> /var/named/forwarders.conf
 restorecon -v /var/named/forwarders.conf
-chmod -v 755 /var/named/forwarders.conf
+chmod -v 640 /var/named/forwarders.conf
 
 # setup initial DNS database
 rm -rvf /var/named/dynamic
@@ -131,13 +131,15 @@ echo "/etc/named.conf"
 cat /etc/named.conf
 
 if [ "$DISTRO" == "rhel6" ] ; then
-    chkconfig ntpd on
-    service ntpd start
+    # Setup firewall
+    lokkit --service=dns
+    # Setup and start service
+    chkconfig named on
+    service named start
 else
     # Setup firewall
     firewall-cmd --add-service=dns
     firewall-cmd --permanent --add-service=dns
-    firewall-cmd --list-all
     # Setup and start service
     systemctl enable named.service
     systemctl start named.service

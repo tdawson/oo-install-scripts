@@ -11,3 +11,4 @@ else
     echo "${NODEHOSTNAME}" > /etc/hostname
 fi
 
+hostname ${NODEHOSTNAME}

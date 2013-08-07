@@ -11,3 +11,4 @@ else
     echo "${BROKERHOSTNAME}" > /etc/hostname
 fi
 
+hostname ${BROKERHOSTNAME}

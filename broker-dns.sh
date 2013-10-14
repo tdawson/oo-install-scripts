@@ -130,6 +130,11 @@ echo ""
 echo "/etc/named.conf"
 cat /etc/named.conf
 
+# Add us at the beginning of the resolve.conf file
+if ! grep -q 127.0.0.1 /etc/resolv.conf ; then
+    sed -i 's/^/nameserver 127.0.0.1/' /etc/resolve.conf
+fi
+
 if [ "$DISTRO" == "rhel6" ] ; then
     # Setup firewall
     lokkit --service=dns

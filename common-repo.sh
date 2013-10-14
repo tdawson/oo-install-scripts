@@ -13,6 +13,7 @@ elif [ "$DISTRO" == "fedora20" ] ; then
 	RELEASE="fedora-20"
 elif [ "$DISTRO" == "rhel6" ] ; then
 	RELEASE="rhel-6"
+	rpm -Uvh http://download.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm
 else
 	echo "Your distro is not supported.  Exiting ..."
 	exit 1

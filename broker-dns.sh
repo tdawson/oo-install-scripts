@@ -162,6 +162,7 @@ fi
 #echo "quit "
 #echo "=====end cut above this line===="
 #nsupdate -k ${KEYFILE}
+echo "oo-register-dns -s 127.0.0.1 -h ${BROKERNAME} -d ${DOMAIN} -n ${BROKERIP} -k ${KEYFILE}"
 oo-register-dns -s 127.0.0.1 -h ${BROKERNAME} -d ${DOMAIN} -n ${BROKERIP} -k ${KEYFILE}
 
 
